@@ -10,13 +10,32 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
+  ...compat.extends(
+    'next/core-web-vitals',
+    'next/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ),
   {
     rules: {
-      // prettier rules
-      // javascript rules
-      // typescript rules
-      // react rules
+      // JavaScript essential rules
+      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      eqeqeq: ['error', 'always'],
+      curly: 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'no-empty': 'warn',
+
+      // TypeScript essential rules
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+
+      // React/Next.js specific rules
+      'react/react-in-jsx-scope': 'off',
+
+      // Prettier integration
+      'prettier/prettier': 'off',
     },
   },
 ];
