@@ -8,9 +8,16 @@ interface ButtonProps {
   children?: ReactNode;
   type?: 'button' | 'submit' | 'reset';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'success' | 'danger' | 'warning';
-  condition?: 'default' | 'loading' | 'disabled' | 'active' | 'link';
-  color?: '';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'outline'
+    | 'ghost'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'link';
+  action?: 'default' | 'loading' | 'link';
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -18,9 +25,9 @@ interface ButtonProps {
 const Button = ({
   children,
   type = 'button',
-  size = 'lg',
-  variant = 'ghost',
-  condition = 'default',
+  size = 'md',
+  variant = 'primary',
+  action = 'default',
   className = '',
   onClick,
   ...restProps
@@ -30,7 +37,7 @@ const Button = ({
   >([]);
   const [rippleKey, setRippleKey] = useState(0);
 
-  // Determine ripple color based on background classes in the button's className
+  // Determine ripple color based on background classes
   const rippleColorClass = (() => {
     if (className.includes('bg-black')) {
       return 'bg-white';
@@ -58,83 +65,56 @@ const Button = ({
     setRipples((prev) => prev.filter((ripple) => ripple.key !== key));
   };
 
-  switch (condition) {
-    case 'default':
-      return (
-        <button
-          type={type}
-          {...restProps}
-          onClick={handleClick}
+  return (
+    <button
+      type={type}
+      {...restProps}
+      onClick={handleClick}
+      className={cn(
+        'relative flex cursor-pointer items-center justify-center overflow-hidden rounded-full capitalize transition-colors select-none disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+        size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
+        size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
+        size === 'md' && 'gap-2 px-4 py-2 text-sm',
+        size === 'lg' && 'py-2,5 gap-2 px-5 text-base',
+        size === 'xl' && 'gap-2.5 px-6 py-3 text-lg',
+        variant === 'primary' &&
+          'bg-blue-500 text-white hover:bg-blue-600 disabled:hover:bg-blue-500',
+        variant === 'secondary' && 'bg-white text-black hover:bg-white/90 disabled:hover:bg-white',
+        variant === 'success' &&
+          'bg-green-500 text-white hover:bg-green-600 disabled:hover:bg-green-500',
+        variant === 'warning' &&
+          'bg-yellow-500 text-white hover:bg-yellow-600 disabled:hover:bg-yellow-500',
+        variant === 'danger' && 'bg-red-500 text-white hover:bg-red-600 disabled:hover:bg-red-500',
+        variant === 'ghost' &&
+          'bg-transparent text-white hover:bg-blue-600 disabled:hover:bg-transparent',
+        variant === 'outline' &&
+          'border border-white/15 bg-transparent text-white hover:border-transparent hover:bg-white/15 disabled:hover:border-white/15 disabled:hover:bg-transparent',
+        variant === 'link' &&
+          'text-white transition-none hover:text-blue-500 hover:underline disabled:hover:text-white disabled:hover:no-underline',
+      )}
+    >
+      {ripples?.map((ripple) => (
+        <span
+          key={ripple.key}
+          style={{
+            top: ripple.y,
+            left: ripple.x,
+            width: ripple.size,
+            height: ripple.size,
+          }}
           className={cn(
-            'relative flex cursor-pointer items-center justify-center overflow-hidden rounded-full border-transparent bg-blue-500 text-white transition-colors hover:bg-blue-600',
-            className,
-            size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-            size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-            size === 'md' && 'gap-2 px-4 py-1.5 text-sm',
-            size === 'lg' && 'gap-2 px-5 py-2 text-base',
-            size === 'xl' && 'gap-2.5 px-6 py-2.5 text-lg',
-            variant === 'secondary' && 'bg-white text-black hover:bg-white/90',
-            variant === 'outline' &&
-              'border border-white/15 bg-transparent text-white hover:border-transparent hover:bg-white/15',
-            variant === 'ghost' && 'bg-transparent text-white hover:bg-blue-600',
+            'animate-ripple pointer-events-none absolute rounded-full bg-white',
+            rippleColorClass,
+            variant === 'secondary' && 'bg-black',
+            variant === 'link' && 'bg-blue-500',
           )}
-        >
-          {ripples.map((ripple) => (
-            <span
-              key={ripple.key}
-              style={{
-                top: ripple.y,
-                left: ripple.x,
-                width: ripple.size,
-                height: ripple.size,
-              }}
-              className={cn(
-                'animate-ripple pointer-events-none absolute rounded-full',
-                rippleColorClass,
-                variant === 'secondary' && 'bg-black',
-              )}
-              onAnimationEnd={() => handleAnimationEnd(ripple.key)}
-            />
-          ))}
-          {children}
-        </button>
-      );
-    case 'loading':
-      return (
-        <button
-          type={type}
-          {...restProps}
-          onClick={handleClick}
-          className={cn(
-            'relative flex cursor-pointer items-center justify-center overflow-hidden rounded-full border-transparent bg-blue-500 text-white transition-colors',
-            className,
-            size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-            size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-            size === 'md' && 'gap-2 px-4 py-1.5 text-sm',
-            size === 'lg' && 'gap-2 px-5 py-2 text-base',
-            size === 'xl' && 'gap-2.5 px-6 py-2.5 text-lg',
-            variant === 'secondary' && 'bg-white text-black',
-            variant === 'outline' && 'border border-white/15 bg-transparent text-white',
-            variant === 'ghost' && 'bg-transparent text-white',
-          )}
-        >
-          {ripples.map((ripple) => (
-            <span
-              key={ripple.key}
-              style={{
-                top: ripple.y,
-                left: ripple.x,
-                width: ripple.size,
-                height: ripple.size,
-              }}
-              className={cn(
-                'animate-ripple pointer-events-none absolute rounded-full',
-                rippleColorClass,
-                variant === 'secondary' && 'bg-black',
-              )}
-              onAnimationEnd={() => handleAnimationEnd(ripple.key)}
-            />
-          ))}
+          onAnimationEnd={() => handleAnimationEnd(ripple.key)}
+        />
+      ))}
+
+      {action === 'loading' ? (
+        <>
           <RiLoader3Fill
             className={cn(
               'animate-spin',
@@ -146,130 +126,12 @@ const Button = ({
             )}
           />
           {children ? children : 'Loading...'}
-        </button>
-      );
-    case 'disabled':
-      return (
-        <button
-          type={type}
-          {...restProps}
-          onClick={handleClick}
-          className={cn(
-            'relative flex items-center justify-center overflow-hidden rounded-full border-transparent bg-blue-500 text-white transition-colors hover:bg-blue-600',
-            className,
-            size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-            size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-            size === 'md' && 'gap-2 px-4 py-1.5 text-sm',
-            size === 'lg' && 'gap-2 px-5 py-2 text-base',
-            size === 'xl' && 'gap-2.5 px-6 py-2.5 text-lg',
-            variant === 'secondary' && 'bg-white text-black hover:bg-white/90',
-            variant === 'outline' &&
-              'border border-white/15 bg-transparent text-white hover:border-transparent hover:bg-white/15',
-            variant === 'ghost' && 'bg-transparent text-white hover:bg-blue-600',
-          )}
-        >
-          {ripples.map((ripple) => (
-            <span
-              key={ripple.key}
-              style={{
-                top: ripple.y,
-                left: ripple.x,
-                width: ripple.size,
-                height: ripple.size,
-              }}
-              className={cn(
-                'animate-ripple pointer-events-none absolute rounded-full',
-                rippleColorClass,
-                variant === 'secondary' && 'bg-black',
-              )}
-              onAnimationEnd={() => handleAnimationEnd(ripple.key)}
-            />
-          ))}
-          {children}
-        </button>
-      );
-    case 'active':
-      return (
-        <button
-          type={type}
-          {...restProps}
-          onClick={handleClick}
-          className={cn(
-            'relative flex items-center justify-center overflow-hidden rounded-full border-transparent bg-blue-600 text-white transition-colors',
-            className,
-            size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-            size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-            size === 'md' && 'gap-2 px-4 py-1.5 text-sm',
-            size === 'lg' && 'gap-2 px-5 py-2 text-base',
-            size === 'xl' && 'gap-2.5 px-6 py-2.5 text-lg',
-            variant === 'secondary' && 'bg-white/90 text-black',
-            variant === 'outline' && 'bg-white/15 text-white',
-          )}
-        >
-          {ripples.map((ripple) => (
-            <span
-              key={ripple.key}
-              style={{
-                top: ripple.y,
-                left: ripple.x,
-                width: ripple.size,
-                height: ripple.size,
-              }}
-              className={cn(
-                'animate-ripple pointer-events-none absolute rounded-full',
-                rippleColorClass,
-                variant === 'secondary' && 'bg-black',
-              )}
-              onAnimationEnd={() => handleAnimationEnd(ripple.key)}
-            />
-          ))}
-          {children}
-        </button>
-      );
-    case 'link':
-      return (
-        <button
-          type={type}
-          {...restProps}
-          onClick={handleClick}
-          className={cn(
-            'relative flex items-center justify-center overflow-hidden rounded-full border-transparent bg-blue-500 text-white transition-colors hover:bg-blue-600',
-            className,
-            size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-            size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-            size === 'md' && 'gap-2 px-4 py-1.5 text-sm',
-            size === 'lg' && 'gap-2 px-5 py-2 text-base',
-            size === 'xl' && 'gap-2.5 px-6 py-2.5 text-lg',
-            variant === 'secondary' && 'bg-white text-black hover:bg-white/90',
-            variant === 'outline' &&
-              'border border-white/15 bg-transparent text-white hover:border-transparent hover:bg-white/15',
-            variant === 'ghost' && 'bg-transparent text-white hover:bg-blue-600',
-          )}
-        >
-          {ripples.map((ripple) => (
-            <span
-              key={ripple.key}
-              style={{
-                top: ripple.y,
-                left: ripple.x,
-                width: ripple.size,
-                height: ripple.size,
-              }}
-              className={cn(
-                'animate-ripple pointer-events-none absolute rounded-full',
-                rippleColorClass,
-                variant === 'secondary' && 'bg-black',
-              )}
-              onAnimationEnd={() => handleAnimationEnd(ripple.key)}
-            />
-          ))}
-          {children}
-        </button>
-      );
-
-    default:
-      <></>;
-  }
+        </>
+      ) : (
+        children
+      )}
+    </button>
+  );
 };
 
 export default Button;

@@ -1,5 +1,4 @@
 import Button from '@/components/custom-ui/Button';
-import AnimatedButton from '@/components/custom-ui/TestButton';
 import Image from 'next/image';
 
 export default function Home() {
@@ -25,34 +24,24 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
         </ol>
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <Button>
-            {/* <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            /> */}
-            Loading...
-          </Button>
-          <AnimatedButton>
-            {' '}
-            {/* <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            /> */}
-            Deploy now
-          </AnimatedButton>
-          {/* <a
-            className="bg-foreground text-background flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm transition-colors hover:bg-[#383838] sm:h-12 sm:px-5 sm:text-base dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></a> */}
+        <div className="flex flex-col items-center gap-10 sm:flex-row">
+          <div className="space-y-5">
+            <Button action="default">Default</Button>
+            <Button action="link">Link</Button>
+            <Button action="loading">Loading...</Button>
+            <Button disabled={true}>Disabled</Button>
+          </div>
+          <div className="space-y-5">
+            <Button variant="primary">primary</Button>
+            <Button variant="secondary">secondary</Button>
+            <Button variant="success">success</Button>
+            <Button variant="warning">warning</Button>
+            <Button variant="danger">danger</Button>
+            <Button variant="ghost">ghost</Button>
+            <Button variant="outline">outline</Button>
+            <Button variant="link">link</Button>
+          </div>
+
           <a
             className="flex h-10 items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
