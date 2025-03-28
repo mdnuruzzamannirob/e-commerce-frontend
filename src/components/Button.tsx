@@ -29,7 +29,53 @@ const buttonVariants = cva(
         md: 'px-4 py-1.5 text-sm gap-2',
         lg: 'px-5 py-2 text-base gap-2.5',
       },
+      isLoading: {
+        true: 'cursor-wait',
+      },
     },
+    compoundVariants: [
+      // Loading state overrides
+      {
+        variant: 'primary',
+        isLoading: true,
+        className: 'hover:bg-blue-500',
+      },
+      {
+        variant: 'secondary',
+        isLoading: true,
+        className: 'hover:bg-zinc-700 dark:hover:bg-white',
+      },
+      {
+        variant: 'outline',
+        isLoading: true,
+        className: 'hover:bg-transparent dark:hover:bg-transparent',
+      },
+      {
+        variant: 'ghost',
+        isLoading: true,
+        className: 'hover:bg-transparent hover:text-black',
+      },
+      {
+        variant: 'link',
+        isLoading: true,
+        className: 'hover:text-black hover:no-underline dark:text-white',
+      },
+      {
+        variant: 'success',
+        isLoading: true,
+        className: 'hover:bg-green-500',
+      },
+      {
+        variant: 'danger',
+        isLoading: true,
+        className: 'hover:bg-red-500',
+      },
+      {
+        variant: 'warning',
+        isLoading: true,
+        className: 'hover:bg-yellow-500',
+      },
+    ],
     defaultVariants: {
       variant: 'primary',
       size: 'md',
@@ -47,8 +93,8 @@ interface ButtonProps
 
 const Button = ({
   children,
-  variant,
-  size,
+  variant = 'primary',
+  size = 'md',
   isLoading = false,
   className,
   href,
@@ -75,7 +121,7 @@ const Button = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
-    const rippleSize = Math.max(rect.width, rect.height);
+    const rippleSize = Math.max(rect?.width, rect?.height);
     const x = e.clientX - rect.left - rippleSize / 2;
     const y = e.clientY - rect.top - rippleSize / 2;
 
@@ -90,18 +136,7 @@ const Button = ({
 
   return (
     <button
-      className={cn(
-        buttonVariants({ variant, size, className }),
-        isLoading && 'cursor-wait',
-        isLoading && variant === 'primary' && 'hover:bg-blue-100',
-        isLoading && variant === 'secondary' && 'hover:bg-zinc-700 dark:hover:bg-white',
-        isLoading && variant === 'outline' && 'hover:bg-transparent dark:hover:bg-transparent',
-        isLoading && variant === 'ghost' && 'hover:bg-transparent hover:text-black',
-        isLoading && variant === 'link' && 'hover:text-black hover:no-underline dark:text-white',
-        isLoading && variant === 'success' && 'hover:bg-green-500',
-        isLoading && variant === 'danger' && 'hover:bg-red-500',
-        isLoading && variant === 'warning' && 'hover:bg-yellow-500',
-      )}
+      className={cn(buttonVariants({ variant, size, isLoading, className }))}
       onClick={handleClick}
       disabled={isLoading}
       {...props}
@@ -126,9 +161,9 @@ const Button = ({
             className={cn(
               'animate-spin',
               size === 'xs' && 'size-3',
-              size === 'sm' && 'size-5',
-              size === 'md' && 'size-6',
-              size === 'lg' && 'size-7',
+              size === 'sm' && 'size-4',
+              size === 'md' && 'size-5',
+              size === 'lg' && 'size-6',
             )}
           />
           {children || 'Loading...'}
