@@ -27,7 +27,9 @@ export default function Home() {
         <div className="flex flex-col items-center gap-10 sm:flex-row">
           <div className="space-y-5">
             <Button action="default">Default</Button>
-            <Button action="link">Link</Button>
+            <Button variant="link" action="link" href="/">
+              Link
+            </Button>
             <Button action="loading">Loading...</Button>
             <Button disabled={true}>Disabled</Button>
           </div>
