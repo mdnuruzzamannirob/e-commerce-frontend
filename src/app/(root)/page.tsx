@@ -1,4 +1,4 @@
-import Button from '@/components/custom-ui/Button';
+import { Button } from '@/components/custom-ui/Button';
 import Image from 'next/image';
 
 export default function Home() {
@@ -26,32 +26,24 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-10 sm:flex-row">
           <div className="space-y-5">
-            <Button action="default">Default</Button>
-            <Button variant="link" action="link" href="/">
+            <Button isLoading>Default</Button>
+            {/* <Button>Default</Button>
+            <Button variant="link" href="/">
               Link
             </Button>
-            <Button action="loading">Loading...</Button>
-            <Button disabled={true}>Disabled</Button>
+            <Button isLoading>Loading...</Button>
+            <Button disabled={true}>Disabled</Button> */}
           </div>
-          <div className="space-y-5">
+          {/* <div className="space-y-5">
             <Button variant="primary">primary</Button>
             <Button variant="secondary">secondary</Button>
+            <Button variant="outline">outline</Button>
+            <Button variant="ghost">ghost</Button>
+            <Button variant="link">link</Button>
             <Button variant="success">success</Button>
             <Button variant="warning">warning</Button>
             <Button variant="danger">danger</Button>
-            <Button variant="ghost">ghost</Button>
-            <Button variant="outline">outline</Button>
-            <Button variant="link">link</Button>
-          </div>
-
-          <a
-            className="flex h-10 items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div> */}
         </div>
       </main>
       <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">

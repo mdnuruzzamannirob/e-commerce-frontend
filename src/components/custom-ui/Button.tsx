@@ -1,36 +1,59 @@
 'use client';
 
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import { ReactNode, useState, ButtonHTMLAttributes } from 'react';
+import { ReactNode, useState } from 'react';
 import { RiLoader3Fill } from 'react-icons/ri';
 import { useRouter } from 'next/navigation';
+import { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+const buttonVariants = cva(
+  'relative flex items-center justify-center overflow-hidden rounded-full capitalize transition-colors disabled:cursor-not-allowed disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-blue-500 text-white hover:bg-blue-600',
+        secondary:
+          'bg-zinc-700 dark:bg-white text-white dark:text-black hover:bg-zinc-600 dark:hover:bg-white/90',
+        outline:
+          'border border-zinc-200 dark:border-white/15 bg-transparent hover:bg-zinc-200 dark:hover:bg-white/15',
+        ghost: 'bg-transparent hover:bg-blue-600 dark:text-zinc-700 hover:text-white',
+        link: 'dark:text-white hover:text-blue-500 hover:underline',
+        success: 'bg-green-500 text-white hover:bg-green-600',
+        danger: 'bg-red-500 text-white hover:bg-red-600',
+        warning: 'bg-yellow-500 text-white hover:bg-yellow-600',
+      },
+      size: {
+        xs: 'px-2 py-0.5 text-[10px] gap-1',
+        sm: 'px-3 py-1 text-xs gap-1.5',
+        md: 'px-4 py-1.5 text-sm gap-2',
+        lg: 'px-5 py-2 text-base gap-2.5',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+    },
+  },
+);
+
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   children?: ReactNode;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'outline'
-    | 'ghost'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'link';
-  action?: 'default' | 'loading' | 'link';
+  isLoading?: boolean;
   href?: string;
-  className?: string;
 }
 
 const Button = ({
   children,
-  size = 'md',
-  variant = 'primary',
-  action = 'default',
-  className = '',
+  variant,
+  size,
+  isLoading = false,
+  className,
   href,
   onClick,
-  ...restProps
+  ...props
 }: ButtonProps) => {
   const router = useRouter();
   const [ripples, setRipples] = useState<
@@ -38,108 +61,83 @@ const Button = ({
   >([]);
   const [rippleKey, setRippleKey] = useState(0);
 
-  // Determine ripple color based on className (or variant)
-  const rippleColorClass = (() => {
-    if (className.includes('bg-black')) {
-      return 'bg-white';
-    } else if (className.includes('bg-white')) {
-      return 'bg-black';
-    }
-    return 'bg-white';
-  })();
+  const rippleColors = {
+    primary: 'bg-white',
+    secondary: 'bg-white dark:bg-black',
+    outline: 'bg-zinc-700 dark:bg-white',
+    ghost: 'bg-white',
+    success: 'bg-white',
+    danger: 'bg-white',
+    warning: 'bg-white',
+    link: 'bg-blue-500',
+  };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
     const rippleSize = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - rippleSize / 2;
     const y = e.clientY - rect.top - rippleSize / 2;
-    const newRipple = { x, y, size: rippleSize, key: rippleKey };
+
+    setRipples((prev) => [...prev, { x, y, size: rippleSize, key: rippleKey }]);
     setRippleKey((prev) => prev + 1);
-    setRipples((prev) => [...prev, newRipple]);
 
     onClick?.(e);
-
-    if (action === 'link' && href) {
+    if (href) {
       router.push(href);
     }
   };
 
-  const handleAnimationEnd = (key: number) => {
-    setRipples((prev) => prev.filter((ripple) => ripple.key !== key));
-  };
-
-  // The inner content is the same for both a button and a link.
-  const content = (
-    <>
-      {ripples.map((ripple) => (
+  return (
+    <button
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        isLoading && 'cursor-wait',
+        isLoading && variant === 'primary' && 'hover:bg-blue-100',
+        isLoading && variant === 'secondary' && 'hover:bg-zinc-700 dark:hover:bg-white',
+        isLoading && variant === 'outline' && 'hover:bg-transparent dark:hover:bg-transparent',
+        isLoading && variant === 'ghost' && 'hover:bg-transparent hover:text-black',
+        isLoading && variant === 'link' && 'hover:text-black hover:no-underline dark:text-white',
+        isLoading && variant === 'success' && 'hover:bg-green-500',
+        isLoading && variant === 'danger' && 'hover:bg-red-500',
+        isLoading && variant === 'warning' && 'hover:bg-yellow-500',
+      )}
+      onClick={handleClick}
+      disabled={isLoading}
+      {...props}
+    >
+      {/* Ripple Effect */}
+      {ripples.map(({ x, y, size, key }) => (
         <span
-          key={ripple.key}
-          style={{
-            top: ripple.y,
-            left: ripple.x,
-            width: ripple.size,
-            height: ripple.size,
-          }}
+          key={key}
           className={cn(
             'animate-ripple pointer-events-none absolute rounded-full',
-            rippleColorClass,
-            variant === 'secondary' && 'bg-black',
-            variant === 'link' && 'bg-blue-500',
+            rippleColors[variant || 'primary'],
           )}
-          onAnimationEnd={() => handleAnimationEnd(ripple.key)}
+          style={{ top: y, left: x, width: size, height: size }}
+          onAnimationEnd={() => setRipples((prev) => prev.filter((r) => r.key !== key))}
         />
       ))}
 
-      {action === 'loading' ? (
-        <>
+      {/* Content */}
+      {isLoading ? (
+        <div className="flex items-center gap-1">
           <RiLoader3Fill
             className={cn(
               'animate-spin',
-              size === 'xs' && 'min-h-[14px] min-w-[14px]',
-              size === 'sm' && 'min-h-4 min-w-4',
-              size === 'md' && 'min-h-5 min-w-5',
-              size === 'lg' && 'min-h-6 min-w-6',
-              size === 'xl' && 'min-h-7 min-w-7',
+              size === 'xs' && 'size-3',
+              size === 'sm' && 'size-5',
+              size === 'md' && 'size-6',
+              size === 'lg' && 'size-7',
             )}
           />
-          {children ? children : 'Loading...'}
-        </>
+          {children || 'Loading...'}
+        </div>
       ) : (
         children
       )}
-    </>
-  );
-
-  // The computed class names based on props.
-  const classes = cn(
-    'relative flex cursor-pointer items-center justify-center overflow-hidden rounded-full capitalize transition-colors select-none disabled:cursor-not-allowed disabled:opacity-50',
-    className,
-    size === 'xs' && 'gap-1 px-2 py-0.5 text-[10px]',
-    size === 'sm' && 'gap-1.5 px-3 py-1 text-xs',
-    size === 'md' && 'gap-2 px-4 py-2 text-sm',
-    size === 'lg' && 'py-2.5 gap-2 px-5 text-base',
-    size === 'xl' && 'gap-2.5 px-6 py-3 text-lg',
-    variant === 'primary' && 'bg-blue-500 text-white hover:bg-blue-600 disabled:hover:bg-blue-500',
-    variant === 'secondary' && 'bg-white text-black hover:bg-white/90 disabled:hover:bg-white',
-    variant === 'success' &&
-      'bg-green-500 text-white hover:bg-green-600 disabled:hover:bg-green-500',
-    variant === 'warning' &&
-      'bg-yellow-500 text-white hover:bg-yellow-600 disabled:hover:bg-yellow-500',
-    variant === 'danger' && 'bg-red-500 text-white hover:bg-red-600 disabled:hover:bg-red-500',
-    variant === 'ghost' &&
-      'bg-transparent text-white hover:bg-blue-600 disabled:hover:bg-transparent',
-    variant === 'outline' &&
-      'border border-white/15 bg-transparent text-white hover:border-transparent hover:bg-white/15 disabled:hover:border-white/15 disabled:hover:bg-transparent',
-    variant === 'link' &&
-      'text-white transition-none hover:text-blue-500 hover:underline disabled:hover:text-white disabled:hover:no-underline',
-  );
-
-  return (
-    <button {...restProps} onClick={handleClick} className={classes}>
-      {content}
     </button>
   );
 };
 
-export default Button;
+export { Button, buttonVariants };
