@@ -81,10 +81,7 @@ const Favorite = () => {
                       onClick={() => !pathname.includes(item.url) && router.push(item.url)}
                       className="cursor-pointer truncate font-semibold hover:underline"
                     >
-                      {item?.name} Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Accusantium aut at provident quia doloremque hic architecto aliquid
-                      perferendis consequatur saepe voluptatibus nulla beatae, adipisci itaque
-                      recusandae animi, quam nostrum corrupti!
+                      {item?.name}
                     </h3>
                     <p className="text-muted-foreground truncate">{item?.variant}</p>
                   </div>

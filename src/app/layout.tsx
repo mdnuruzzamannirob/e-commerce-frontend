@@ -31,16 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          'bg-background text-foreground antialiased',
-          nunitoSans.variable,
-          openSans.variable,
-          sora.variable,
-        )}
-      >
+      <body className={cn('antialiased', nunitoSans.variable, openSans.variable, sora.variable)}>
         <Header />
-        <main className="container">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

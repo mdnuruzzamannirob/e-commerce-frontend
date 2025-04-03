@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Account from './Account';
 import Cart from './Cart';
 import Favorite from './Favorite';
+import Search from './Search';
 
 const Header = () => {
   const pathname = usePathname();
@@ -66,20 +67,9 @@ const Header = () => {
 
         {/* right */}
         <div className="flex items-center gap-2">
-          <button
-            className={cn(
-              'flex size-9 cursor-pointer items-center justify-center rounded-md transition-colors',
-              searchOpen ? 'bg-gray-100 text-blue-500' : 'hover:bg-gray-100 hover:text-blue-500',
-            )}
-            onClick={() => setSearchOpen(!searchOpen)}
-          >
-            <IoSearchOutline className="size-5" />
-          </button>
-
+          <Search />
           <Favorite />
-
           <Cart />
-
           <Account />
         </div>
       </nav>
