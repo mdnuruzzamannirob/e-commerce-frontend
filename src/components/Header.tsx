@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { IoSearchOutline } from 'react-icons/io5';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useState } from 'react';
 import Account from './Account';
@@ -14,7 +13,6 @@ const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
 
   return (
