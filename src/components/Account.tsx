@@ -89,7 +89,7 @@ const Account = () => {
           </div>
           <p className="border-b border-gray-100"></p>
           <div className="px-2 pb-2 text-sm font-medium">
-            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-500 hover:bg-red-50">
+            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-400 hover:bg-red-50 hover:text-red-500">
               <IoIosLogOut className="size-4" /> Log Out
             </button>
           </div>
