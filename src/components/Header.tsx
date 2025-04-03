@@ -9,8 +9,8 @@ const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   return (
-    <header className="border-b bg-white text-black dark:bg-black dark:text-white">
-      <nav className="container flex items-center justify-between gap-8 p-4">
+    <header className="bg-white text-black dark:bg-black dark:text-white">
+      <nav className="container flex items-center justify-between gap-10 p-4">
         <button
           onClick={() => pathname !== '/' && router.push('/')}
           className="cursor-pointer text-xl font-bold whitespace-nowrap uppercase"

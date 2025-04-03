@@ -1,27 +1,46 @@
 import type { Metadata } from 'next';
-import { Sora } from 'next/font/google';
+import { Sora, Nunito_Sans, Open_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
+
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-nunito-sans',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open-sans',
+});
 
 const sora = Sora({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-sora',
 });
 
 export const metadata: Metadata = {
   title: 'The One',
-  description:
-    'The One is a modern e-commerce platform that offers a wide range of products and services to meet the needs of its customers.',
+  description: 'Modern e-commerce platform offering diverse products and services.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${sora.className} bg-zinc-100 antialiased dark:bg-zinc-900`}>
+      <body
+        className={cn(
+          'bg-background text-foreground antialiased',
+          nunitoSans.variable,
+          openSans.variable,
+          sora.variable,
+        )}
+      >
         <Header />
-        {children}
+        <main className="container">{children}</main>
         <Footer />
       </body>
     </html>
