@@ -36,6 +36,8 @@ const Cart = () => {
     };
   }, []);
 
+  const totalAmount = demoCartData?.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
     <div ref={dropdownRef} className="relative">
       <button
@@ -104,7 +106,7 @@ const Cart = () => {
           <p className="border-b border-gray-100"></p>
           <div className="flex items-center justify-between gap-2 p-2">
             <h3 className="font-semibold">Total</h3>
-            <p className="">$43,796</p>
+            <p className="">${totalAmount}</p>
           </div>
 
           <div className="p-2 text-sm font-medium">
