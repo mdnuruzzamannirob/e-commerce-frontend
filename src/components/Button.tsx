@@ -8,11 +8,11 @@ import { useRouter } from 'next/navigation';
 import { ButtonHTMLAttributes } from 'react';
 
 const buttonVariants = cva(
-  'relative flex items-center justify-center overflow-hidden rounded-full capitalize transition-colors disabled:cursor-not-allowed disabled:opacity-50',
+  'relative flex items-center select-none justify-center cursor-pointer overflow-hidden rounded-full capitalize  transition-colors disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
-        primary: 'bg-blue-500 text-white hover:bg-blue-600',
+        primary: 'bg-blue-500 text-white hover:bg-blue-600 dark:hover:bg-blue-600',
         secondary:
           'bg-zinc-700 dark:bg-white text-white dark:text-black hover:bg-zinc-600 dark:hover:bg-white/90',
         outline:
@@ -156,7 +156,7 @@ const Button = ({
 
       {/* Content */}
       {isLoading ? (
-        <div className="flex items-center gap-1">
+        <span className="flex items-center gap-1">
           <RiLoader3Fill
             className={cn(
               'animate-spin',
@@ -167,7 +167,7 @@ const Button = ({
             )}
           />
           {children || 'Loading...'}
-        </div>
+        </span>
       ) : (
         children
       )}
