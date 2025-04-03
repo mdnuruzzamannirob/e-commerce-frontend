@@ -8,6 +8,33 @@ const Search = () => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Mock data
+  const suggestedResults = [
+    'Apple iMac 2024 (All-in-One PC)',
+    'Samsung Galaxy S24 Ultra (1Tb, Titanium Violet)',
+    'MacBook Pro 14-inch M3 - Space Gray - Apple',
+  ];
+
+  const searchHistory = [
+    'Microsoft - Surface Laptop, Platinum, 256 GB SSD',
+    'Huawei - P40 Lite - Smartphone 128GB, Black',
+  ];
+
+  const featuredProducts = [
+    { name: 'Apple iMac 2024, 27″, 256GB', rating: 4.95, price: 1799 },
+    { name: 'Apple iPad PRO, 12″, Space Gray', rating: 4.7, price: 999 },
+    { name: 'Apple MacBook PRO, 1TB', rating: 4.8, price: 2999 },
+  ];
+
+  const categories = [
+    'Computer & Office',
+    'Collectibles & Toys',
+    'Books',
+    'Fashion/Clothes',
+    'Sports & Outdoors',
+    'Painting & Hobby',
+  ];
+
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setSearchOpen(false);
@@ -58,8 +85,9 @@ const Search = () => {
         >
           <div className="absolute top-1/2 left-1/2 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 p-5">
             <div className="space-y-5 rounded-md bg-white p-5">
+              {/* Header */}
               <div className="flex items-center justify-between">
-                <h2 className="font-semibold">Advanced search</h2>
+                <h2 className="text-lg font-semibold">Advanced search</h2>
                 <button
                   aria-label="Close search"
                   className="flex size-9 cursor-pointer items-center justify-center rounded-md hover:bg-gray-100"
@@ -69,6 +97,7 @@ const Search = () => {
                 </button>
               </div>
 
+              {/* Search Form */}
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -89,8 +118,64 @@ const Search = () => {
                 </div>
               </form>
 
-              {/* Search results container */}
-              <div className="max-h-[60vh] overflow-y-auto">{/* Add search results here */}</div>
+              {/* Content Container */}
+              <div className="max-h-[65vh] space-y-5 overflow-y-auto">
+                {/* Suggested Results */}
+                <div>
+                  <h3 className="mb-3 text-sm font-medium text-gray-500">Suggested results</h3>
+                  <ul className="space-y-2">
+                    {suggestedResults.map((result, index) => (
+                      <li key={index} className="cursor-pointer rounded-md p-2 hover:bg-gray-100">
+                        {result}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Search History */}
+                <div>
+                  <h3 className="mb-3 text-sm font-medium text-gray-500">History</h3>
+                  <ul className="space-y-2">
+                    {searchHistory.map((item, index) => (
+                      <li key={index} className="cursor-pointer rounded-md p-2 hover:bg-gray-100">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Featured Products */}
+                <div>
+                  <h3 className="mb-3 text-sm font-medium text-gray-500">Featured products</h3>
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {featuredProducts.map((product, index) => (
+                      <div key={index} className="rounded-lg border p-4 hover:shadow-md">
+                        <div className="mb-2 h-40 bg-gray-100"></div>
+                        <h4 className="font-medium">{product.name}</h4>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-yellow-500">★ {product.rating}</span>
+                          <span className="font-semibold">${product.price}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* All Categories */}
+                <div>
+                  <h3 className="mb-3 text-sm font-medium text-gray-500">All categories</h3>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {categories.map((category, index) => (
+                      <button
+                        key={index}
+                        className="rounded-md border p-2 text-left hover:bg-gray-50"
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
