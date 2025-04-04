@@ -35,8 +35,8 @@ const Favorite = () => {
         className={cn(
           'relative flex size-9 cursor-pointer items-center justify-center gap-2 rounded-md transition-colors',
           favoriteOpen
-            ? 'bg-gray-100 text-blue-500 hover:bg-gray-200'
-            : 'hover:bg-gray-100 hover:text-blue-500',
+            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
         )}
         onClick={() => setFavoriteOpen(!favoriteOpen)}
       >
@@ -49,8 +49,8 @@ const Favorite = () => {
       </button>
 
       {favoriteOpen && (
-        <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border border-gray-100 bg-white shadow-sm">
-          <div className="flex items-center justify-between gap-2 border-b border-gray-100 p-3">
+        <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border bg-white shadow-sm dark:bg-black">
+          <div className="flex items-center justify-between gap-2 border-b p-3">
             <h3 className="font-semibold">Favorite Items</h3>
             <p className="">{demoCartData?.length} items</p>
           </div>
@@ -59,7 +59,7 @@ const Favorite = () => {
             {demoCartData.map((item, index) => (
               <div
                 key={index}
-                className="flex size-full items-center justify-between gap-2 p-3 hover:bg-gray-50"
+                className="flex size-full items-center justify-between gap-2 p-3 hover:bg-gray-50 dark:hover:bg-white/5"
               >
                 <div className="flex w-full min-w-0 items-center gap-2">
                   <button
@@ -87,13 +87,13 @@ const Favorite = () => {
                   </div>
                 </div>
 
-                <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100">
+                <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100 dark:bg-red-500/15 dark:hover:bg-red-500/25">
                   <AiOutlineDelete />
                 </button>
               </div>
             ))}
           </div>
-          <p className="border-b border-gray-100"></p>
+          <p className="border-b"></p>
 
           <div className="p-3 text-sm font-medium">
             <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-blue-500 px-3 text-white hover:bg-blue-600">

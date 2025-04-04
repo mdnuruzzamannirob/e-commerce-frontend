@@ -41,8 +41,8 @@ const Account = () => {
         className={cn(
           'flex h-9 cursor-pointer items-center gap-1 rounded-md px-3 transition-colors',
           accountOpen
-            ? 'bg-gray-100 text-blue-500 hover:bg-gray-200'
-            : 'hover:bg-gray-100 hover:text-blue-500',
+            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
         )}
         onClick={() => setAccountOpen(!accountOpen)}
       >
@@ -51,8 +51,8 @@ const Account = () => {
       </button>
 
       {accountOpen && (
-        <div className="absolute top-full right-0 mt-1 w-60 min-w-0 space-y-2 rounded-md border border-gray-100 bg-white shadow-sm">
-          <div className="flex flex-col items-center gap-2 border-b border-gray-100 p-2">
+        <div className="absolute top-full right-0 mt-1 w-60 min-w-0 space-y-2 rounded-md border bg-white shadow-sm dark:bg-black">
+          <div className="flex flex-col items-center gap-2 border-b p-2">
             <Image
               src={userData?.profileUrl}
               alt="profile"
@@ -67,7 +67,7 @@ const Account = () => {
 
             <button
               onClick={() => !pathname.includes('profile') && router.push('/profile')}
-              className="h-8 w-full cursor-pointer rounded-sm border border-gray-200 text-sm hover:bg-gray-100 hover:text-blue-500"
+              className="h-8 w-full cursor-pointer rounded-sm border text-sm hover:bg-gray-100 hover:text-blue-500 dark:hover:bg-white/5"
             >
               View Profile
             </button>
@@ -80,17 +80,17 @@ const Account = () => {
                 className={cn(
                   'group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3',
                   pathname.includes(item.url)
-                    ? 'bg-gray-100'
-                    : 'text-muted-foreground hover:bg-gray-100 hover:text-black',
+                    ? 'bg-gray-100 dark:bg-white/5'
+                    : 'text-muted-foreground hover:bg-gray-100 hover:text-inherit dark:hover:bg-white/5',
                 )}
               >
                 {item.icon} {item.text}
               </button>
             ))}
           </div>
-          <p className="border-b border-gray-100"></p>
+          <p className="border-b"></p>
           <div className="px-2 pb-2 text-sm font-medium">
-            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-400 hover:bg-red-50 hover:text-red-500">
+            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10">
               <IoIosLogOut className="size-4" /> Log Out
             </button>
           </div>

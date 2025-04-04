@@ -107,8 +107,8 @@ const Shop = () => {
         className={cn(
           'relative flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 text-sm font-medium transition-colors',
           shopOpen
-            ? 'bg-gray-100 text-blue-500 hover:bg-gray-200'
-            : 'hover:bg-gray-100 hover:text-blue-500',
+            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
         )}
         onClick={() => setShopOpen(!shopOpen)}
       >
@@ -116,8 +116,8 @@ const Shop = () => {
       </button>
 
       {shopOpen && (
-        <div className="fixed inset-x-0 top-14 z-50 max-h-[calc(100vh-56px)] overflow-y-auto border-b bg-white">
-          <div className="mx-auto h-full max-w-7xl space-y-5 bg-white px-4 py-5 sm:px-6 lg:px-8">
+        <div className="fixed inset-x-0 top-14 z-50 max-h-[calc(100vh-56px)] overflow-y-auto border-b bg-white dark:bg-black dark:text-white">
+          <div className="mx-auto h-full max-w-7xl space-y-5 bg-white px-4 py-5 sm:px-6 lg:px-8 dark:bg-black dark:text-white">
             <div className="grid h-full w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {categories.map((category, index) => (
                 <div key={index} className="space-y-4 text-sm">
@@ -138,7 +138,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <button className="flex h-10 w-full items-center justify-center gap-2 rounded-sm border border-gray-200 text-sm font-medium hover:bg-gray-100 hover:text-blue-500">
+            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border text-sm font-medium transition-colors hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/5">
               See all categories <FaArrowRightLong />
             </button>
           </div>

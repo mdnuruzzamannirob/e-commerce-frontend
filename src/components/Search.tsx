@@ -72,8 +72,9 @@ const Search = () => {
         aria-label="Open search"
         className={cn(
           'flex size-9 items-center justify-center rounded-md transition-colors',
-          'hover:bg-gray-100 hover:text-blue-500 focus:outline-none',
-          searchOpen && 'bg-gray-100 text-blue-500',
+          searchOpen
+            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
         )}
         onClick={() => setSearchOpen(true)}
       >
@@ -89,14 +90,14 @@ const Search = () => {
           <div className="flex h-full w-full items-start justify-center p-4 sm:p-6">
             <div
               ref={contentRef}
-              className="flex size-full max-w-4xl flex-col space-y-3 rounded-md bg-white p-3 sm:space-y-4 sm:p-5"
+              className="flex size-full max-w-4xl flex-col space-y-3 rounded-md bg-white p-3 sm:space-y-4 sm:p-5 dark:border dark:bg-black"
             >
               {/* Header */}
               <div className="flex items-center justify-between">
                 <h2 className="font-semibold sm:text-lg">Advanced search</h2>
                 <button
                   aria-label="Close search"
-                  className="flex size-7 cursor-pointer items-center justify-center rounded-md hover:bg-gray-100 sm:size-9"
+                  className="flex size-7 cursor-pointer items-center justify-center rounded-md hover:bg-black/5 sm:size-9 dark:hover:bg-white/10"
                   onClick={() => setSearchOpen(false)}
                 >
                   <IoCloseOutline className="size-5" />
@@ -167,7 +168,7 @@ const Search = () => {
                         key={index}
                         className="min-w-0 space-y-2 rounded-md border p-3 hover:shadow-md"
                       >
-                        <div className="aspect-square rounded-sm bg-gray-100" />
+                        <div className="aspect-square rounded-sm bg-black/5 dark:bg-white/5" />
                         <h4 className="truncate text-sm font-medium">{product.name}</h4>
                         <div className="flex flex-wrap items-center justify-between">
                           <div className="flex items-center gap-2">
@@ -190,7 +191,7 @@ const Search = () => {
                     {categories.map((category, index) => (
                       <button
                         key={index}
-                        className="cursor-pointer rounded-md border p-2 text-left text-sm hover:bg-gray-50"
+                        className="text-muted-foreground cursor-pointer rounded-md border p-2 text-left text-sm hover:bg-black/5 dark:hover:bg-white/5"
                       >
                         {category}
                       </button>
