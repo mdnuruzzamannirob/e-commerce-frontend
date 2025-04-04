@@ -52,8 +52,8 @@ const Cart = () => {
       </button>
 
       {cartOpen && (
-        <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border border-gray-100 shadow-sm">
-          <div className="flex items-center justify-between gap-2 border-b border-gray-100 p-2">
+        <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border border-gray-100 bg-white shadow-sm">
+          <div className="flex items-center justify-between gap-2 border-b border-gray-100 p-3">
             <h3 className="font-semibold"> Shopping cart</h3>
             <p className="">{demoCartData?.length} items</p>
           </div>
@@ -62,7 +62,7 @@ const Cart = () => {
             {demoCartData.map((item, index) => (
               <div
                 key={index}
-                className="flex size-full justify-between gap-2 p-2 hover:bg-gray-50"
+                className="flex size-full justify-between gap-2 p-3 hover:bg-gray-50"
               >
                 <div className="flex min-w-0 flex-2/3 items-center gap-2">
                   <button
@@ -90,14 +90,14 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="flex flex-1/3 items-center justify-between gap-2">
-                  <button className="flex size-7 cursor-pointer items-center justify-center rounded-sm border transition-colors hover:bg-gray-200">
+                  <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors hover:bg-gray-200">
                     <LuMinus />
                   </button>
                   <p className="text-sm font-medium"> {item?.quantity}</p>
-                  <button className="flex size-7 cursor-pointer items-center justify-center rounded-sm border transition-colors hover:bg-gray-200">
+                  <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors hover:bg-gray-200">
                     <LuPlus />
                   </button>
-                  <button className="flex size-7 cursor-pointer items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100">
+                  <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100">
                     <AiOutlineDelete />
                   </button>
                 </div>
@@ -105,12 +105,12 @@ const Cart = () => {
             ))}
           </div>
           <p className="border-b border-gray-100"></p>
-          <div className="flex items-center justify-between gap-2 p-2">
+          <div className="flex items-center justify-between gap-2 p-3">
             <h3 className="font-semibold">Total</h3>
             <p className="">${totalAmount}</p>
           </div>
 
-          <div className="p-2 text-sm font-medium">
+          <div className="p-3 text-sm font-medium">
             <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-blue-500 px-3 text-white hover:bg-blue-600">
               View Cart Items
             </button>

@@ -2,18 +2,15 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { IoIosArrowDown } from 'react-icons/io';
-import { useState } from 'react';
 import Account from './Account';
 import Cart from './Cart';
 import Favorite from './Favorite';
 import Search from './Search';
+import Shop from './Shop';
 
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
-
-  const [shopOpen, setShopOpen] = useState(false);
 
   return (
     <header className="bg-white text-black dark:bg-black dark:text-white">
@@ -29,15 +26,7 @@ const Header = () => {
         {/* middle */}
         <ul className="flex items-center gap-5 whitespace-nowrap">
           <li>
-            <button
-              className={cn(
-                'flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 font-medium transition-colors',
-                shopOpen ? 'bg-gray-100 text-blue-500' : 'hover:bg-gray-100 hover:text-blue-500',
-              )}
-              onClick={() => setShopOpen(!shopOpen)}
-            >
-              Shop <IoIosArrowDown className={shopOpen ? 'rotate-180' : 'rotate-0'} />
-            </button>
+            <Shop />
           </li>
           <li>
             <button

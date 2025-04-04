@@ -39,18 +39,19 @@ const Account = () => {
     <div ref={dropdownRef} className="relative">
       <button
         className={cn(
-          'flex h-9 cursor-pointer items-center gap-2 rounded-md px-3 transition-colors',
+          'flex h-9 cursor-pointer items-center gap-1 rounded-md px-3 transition-colors',
           accountOpen
             ? 'bg-gray-100 text-blue-500 hover:bg-gray-200'
             : 'hover:bg-gray-100 hover:text-blue-500',
         )}
         onClick={() => setAccountOpen(!accountOpen)}
       >
-        <FaRegUserCircle className="size-5" /> <IoIosArrowDown />
+        <FaRegUserCircle className="size-5" />{' '}
+        <IoIosArrowDown className={accountOpen ? 'rotate-180' : 'rotate-0'} />
       </button>
 
       {accountOpen && (
-        <div className="absolute top-full right-0 mt-1 w-60 min-w-0 space-y-2 rounded-md border border-gray-100 shadow-sm">
+        <div className="absolute top-full right-0 mt-1 w-60 min-w-0 space-y-2 rounded-md border border-gray-100 bg-white shadow-sm">
           <div className="flex flex-col items-center gap-2 border-b border-gray-100 p-2">
             <Image
               src={userData?.profileUrl}
