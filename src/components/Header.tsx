@@ -8,6 +8,7 @@ import Search from './Search';
 import Favorite from './Favorite';
 import Cart from './Cart';
 import Account from './Account';
+import Language from './Language';
 
 type NavItem = {
   name: string;
@@ -24,6 +25,8 @@ const NAV_ITEMS: NavItem[] = [
   { name: 'Blog', path: '/blog' },
 ];
 
+// https://m.media-amazon.com/images/I/51F8112jMXL._AC_SX679_.jpg
+
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -38,7 +41,13 @@ const Header = () => {
     <header className="border-b bg-white text-black dark:bg-black dark:text-white">
       <nav className="container flex items-center justify-between gap-10 p-4">
         {/* Left Section */}
-        <Logo />
+        <div className="flex items-center gap-10">
+          <Logo />
+          <div className="flex items-center gap-2">
+            <Language />
+            <Search />
+          </div>
+        </div>
 
         {/* Middle Navigation */}
         <ul className="flex items-center gap-5 whitespace-nowrap">
@@ -63,7 +72,6 @@ const Header = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-2">
-          <Search />
           <Favorite />
           <Cart />
           <Account />
