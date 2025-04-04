@@ -117,33 +117,35 @@ const Shop = () => {
       </button>
 
       {shopOpen && (
-        <div className="absolute top-full left-1/2 mt-1 w-7xl max-w-7xl -translate-x-1/2 space-y-5 rounded-md border border-gray-100 bg-white p-5 shadow-sm">
-          <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-4">
-            {categories.map((category, index) => (
-              <div key={index} className="space-y-4 text-sm">
-                <h2 className="flex items-center gap-1 font-semibold">
-                  <MdOutlineShoppingBag className="size-5" /> {category.title}
-                </h2>
-                <div className="flex flex-col items-start gap-2">
-                  {category.items.map((item, idx) => (
-                    <button
-                      key={idx}
-                      className="text-muted-foreground cursor-pointer hover:text-inherit hover:underline"
-                    >
-                      {item}
-                    </button>
-                  ))}
+        <div className="fixed inset-0 top-14 z-50 h-fit overflow-y-auto bg-red-100">
+          <div className="mx-auto h-full max-w-7xl space-y-5 overflow-y-auto border-y bg-white px-4 py-5 sm:px-6 lg:px-8">
+            <div className="grid h-full w-full grid-cols-1 gap-5 overflow-y-auto sm:grid-cols-2 lg:grid-cols-4">
+              {categories.map((category, index) => (
+                <div key={index} className="space-y-4 text-sm">
+                  <h2 className="flex items-center gap-1 font-semibold">
+                    <MdOutlineShoppingBag className="size-5" /> {category.title}
+                  </h2>
+                  <div className="flex flex-col items-start gap-2">
+                    {category.items.map((item, idx) => (
+                      <button
+                        key={idx}
+                        className="text-muted-foreground cursor-pointer hover:text-inherit hover:underline"
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <button
-            // onClick={() => !pathname.includes('profile') && router.push('/profile')}
-            className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border border-gray-200 text-sm font-medium hover:bg-gray-100 hover:text-blue-500"
-          >
-            See all categories <FaArrowRightLong />
-          </button>
+            <button
+              // onClick={() => !pathname.includes('profile') && router.push('/profile')}
+              className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border border-gray-200 text-sm font-medium hover:bg-gray-100 hover:text-blue-500"
+            >
+              See all categories <FaArrowRightLong />
+            </button>
+          </div>
         </div>
       )}
     </div>
