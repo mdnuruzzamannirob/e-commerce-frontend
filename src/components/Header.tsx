@@ -19,13 +19,11 @@ const NAV_ITEMS: NavItem[] = [
   { name: 'Shop', path: '/shop' },
   { name: 'On Sale', path: '/on-sale' },
   { name: 'New Arrivals', path: '/new-arrivals' },
-  { name: 'FAQ', path: '/faq' },
+  { name: 'FAQ', path: '/FAQ' },
   { name: 'Contact Us', path: '/contact-us' },
   { name: 'About Us', path: '/about-us' },
   { name: 'Blog', path: '/blog' },
 ];
-
-// https://m.media-amazon.com/images/I/51F8112jMXL._AC_SX679_.jpg
 
 const Header = () => {
   const pathname = usePathname();

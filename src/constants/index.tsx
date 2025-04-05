@@ -1,4 +1,4 @@
-import { MdFavoriteBorder, MdOutlineAccountCircle, MdUTurnRight } from 'react-icons/md';
+import { MdFavoriteBorder, MdUTurnRight } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
 import { BsCartPlus } from 'react-icons/bs';
 import { IoMdHelpCircleOutline } from 'react-icons/io';
@@ -12,7 +12,7 @@ export const accountMenuItems = [
   {
     icon: <MdFavoriteBorder className="size-4" />,
     text: 'Favorite Items',
-    url: '/favorites',
+    url: '/favorite-items',
   },
   {
     icon: <MdUTurnRight className="size-4 -rotate-90" />,
@@ -22,17 +22,12 @@ export const accountMenuItems = [
   {
     icon: <GoHome className="size-4" />,
     text: 'Delivery Addresses',
-    url: '/addresses',
-  },
-  {
-    icon: <MdOutlineAccountCircle className="size-4" />,
-    text: 'My Account',
-    url: '/account',
+    url: '/delivery-addresses',
   },
   {
     icon: <IoMdHelpCircleOutline className="size-4" />,
     text: 'Help Center',
-    url: '/help',
+    url: '/help-center',
   },
 ];
 
