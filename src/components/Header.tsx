@@ -59,7 +59,7 @@ const Header = () => {
                 <button
                   onClick={() => handleNavigation(item.path)}
                   className={cn(
-                    'cursor-pointer text-sm transition-colors hover:text-red-500',
+                    'transition-colors hover:text-red-500',
                     pathname.includes(item.path) && 'text-red-500',
                   )}
                 >

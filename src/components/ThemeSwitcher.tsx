@@ -32,7 +32,7 @@ const ThemeSwitcher = () => {
       <button
         aria-label="Theme switcher"
         className={cn(
-          'flex size-9 cursor-pointer items-center justify-center gap-2 rounded-md transition-colors',
+          'flex size-9 items-center justify-center gap-2 rounded-md transition-colors',
           isOpen
             ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
             : 'hover:bg-black/5 dark:hover:bg-white/10',

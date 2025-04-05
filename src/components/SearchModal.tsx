@@ -98,7 +98,7 @@ const SearchModal = () => {
                 <h5 className="font-semibold">Advanced search</h5>
                 <button
                   aria-label="Close search"
-                  className="flex size-7 cursor-pointer items-center justify-center rounded-md hover:bg-black/5 sm:size-9 dark:hover:bg-white/10"
+                  className="flex size-7 items-center justify-center rounded-md hover:bg-black/5 sm:size-9 dark:hover:bg-white/10"
                   onClick={() => setSearchOpen(false)}
                 >
                   <IoCloseOutline className="size-5" />
