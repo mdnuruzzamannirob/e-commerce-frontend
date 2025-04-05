@@ -1,11 +1,13 @@
 const Home = () => {
   return (
     <div className="container py-20">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <p className="text-lg">Welcome to the Next.js 13.4 app!</p>
-      <p className="text-lg">This is a simple example of a Next.js app.</p>
-      <p className="text-lg">You can start building your app from here.</p>
-      <p className="text-lg">Happy coding!</p>
+      <h1 className="">Happy coding!</h1>
+      <h2 className="">Happy coding!</h2>
+      <h3 className="">Happy coding!</h3>
+      <h4 className="">Happy coding!</h4>
+      <h5 className="">Happy coding!</h5>
+      <h6 className="">Happy coding!</h6>
+      <p className="ripple">Happy coding!</p>
     </div>
   );
 };

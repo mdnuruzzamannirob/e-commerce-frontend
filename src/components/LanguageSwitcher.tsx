@@ -73,9 +73,9 @@ const LanguageSwitcher = () => {
                 setIsOpen(false);
               }}
             >
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2">
                 <Image src={item.flag} alt={item.name} width={30} height={20} className="rounded" />
-                <span>{item.name}</span>
+                <h6>{item.name}</h6>
               </div>
             </button>
           ))}

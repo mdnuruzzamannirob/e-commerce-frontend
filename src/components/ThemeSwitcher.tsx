@@ -49,7 +49,7 @@ const ThemeSwitcher = () => {
             <button
               key={option.code}
               className={cn(
-                'flex size-full items-center gap-2 rounded-sm p-2 text-sm transition-colors',
+                'flex size-full items-center gap-2 rounded-sm p-2 transition-colors',
                 currentTheme.code === option.code
                   ? 'bg-black/5 dark:bg-white/15'
                   : 'hover:bg-black/5 dark:hover:bg-white/15',
@@ -60,7 +60,7 @@ const ThemeSwitcher = () => {
               }}
             >
               {option.icon}
-              <span>{option.name}</span>
+              <h6>{option.name}</h6>
             </button>
           ))}
         </div>

@@ -33,7 +33,7 @@ const FavoriteItemsView = () => {
     <div ref={dropdownRef} className="relative">
       <button
         className={cn(
-          'relative flex size-9 cursor-pointer items-center justify-center gap-2 rounded-md transition-colors',
+          'relative flex size-9 items-center justify-center gap-2 rounded-md transition-colors',
           favoriteOpen
             ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
             : 'hover:bg-black/5 dark:hover:bg-white/10',
@@ -51,8 +51,8 @@ const FavoriteItemsView = () => {
       {favoriteOpen && (
         <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border bg-white shadow-sm dark:bg-black">
           <div className="flex items-center justify-between gap-2 border-b p-3">
-            <h3 className="font-semibold">Favorite Items</h3>
-            <p className="">{demoCartData?.length} items</p>
+            <h5 className="font-semibold">Favorite Items</h5>
+            <p>{demoCartData?.length} items</p>
           </div>
 
           <div className="">
@@ -64,7 +64,7 @@ const FavoriteItemsView = () => {
                 <div className="flex w-full min-w-0 items-center gap-2">
                   <button
                     onClick={() => !pathname.includes(item.url) && router.push(item.url)}
-                    className="size-10 min-w-10 cursor-pointer"
+                    className="size-10 min-w-10"
                   >
                     <Image
                       src={
@@ -76,18 +76,18 @@ const FavoriteItemsView = () => {
                       className="rounded"
                     />
                   </button>
-                  <div className="min-w-0 text-sm">
-                    <h3
+                  <div className="min-w-0">
+                    <h6
                       onClick={() => !pathname.includes(item.url) && router.push(item.url)}
                       className="cursor-pointer truncate font-semibold hover:underline"
                     >
                       {item?.name}
-                    </h3>
-                    <p className="text-muted-foreground truncate">{item?.variant}</p>
+                    </h6>
+                    <p className="truncate">{item?.variant}</p>
                   </div>
                 </div>
 
-                <button className="flex size-6 cursor-pointer items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100 dark:bg-red-500/15 dark:hover:bg-red-500/25">
+                <button className="flex size-6 items-center justify-center rounded-sm bg-red-50 text-red-500 transition-colors hover:bg-red-100 dark:bg-red-500/15 dark:hover:bg-red-500/25">
                   <AiOutlineDelete />
                 </button>
               </div>
@@ -95,8 +95,8 @@ const FavoriteItemsView = () => {
           </div>
           <p className="border-b"></p>
 
-          <div className="p-3 text-sm font-medium">
-            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-red-500 px-3 text-white hover:bg-red-600">
+          <div className="p-3 font-medium">
+            <button className="flex h-10 w-full items-center justify-center gap-2 rounded-sm bg-red-500 px-3 text-white hover:bg-red-600">
               View Favorite Items
             </button>
           </div>

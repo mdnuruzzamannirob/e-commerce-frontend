@@ -4,9 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* --font-primary: var(--font-nunito-sans);
-  --font-secondary: var(--font-open-sans);
-  --font-tertiary: var(--font-sora); */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 
   /* --color-success-100: #49de50;
   --color-success-200: #42c748;
@@ -142,11 +145,58 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50 border-black/5 dark:border-white/15;
   }
+
   body {
-    @apply bg-background text-foreground;
     font-family: var(--font-open-sans) !important;
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+
+  h2 {
+    font-size: 1.375rem; /* 22px */
+    line-height: 1.875rem; /* 30px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+  }
+
+  h4 {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.625rem; /* 26px */
+  }
+
+  h5 {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+
+  h6,
+  div,
+  button,
+  input,
+  textarea,
+  a {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  p,
+  span {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    @apply text-muted-foreground;
+  }
+
+  button {
+    @apply cursor-pointer;
   }
 }
 

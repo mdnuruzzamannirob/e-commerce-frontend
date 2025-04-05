@@ -95,7 +95,7 @@ const SearchModal = () => {
             >
               {/* Header */}
               <div className="flex items-center justify-between">
-                <h2 className="font-semibold sm:text-lg">Advanced search</h2>
+                <h5 className="font-semibold">Advanced search</h5>
                 <button
                   aria-label="Close search"
                   className="flex size-7 cursor-pointer items-center justify-center rounded-md hover:bg-black/5 sm:size-9 dark:hover:bg-white/10"
@@ -118,7 +118,7 @@ const SearchModal = () => {
                     ref={inputRef}
                     type="text"
                     placeholder="Search anything..."
-                    className="w-full rounded-md border py-2 pr-3 pl-10 text-sm outline-none focus:border-transparent focus:ring-2 focus:ring-red-500 sm:py-3 sm:text-base"
+                    className="w-full rounded-md border py-2 pr-3 pl-10 outline-none focus:border-transparent focus:ring-2 focus:ring-red-500 sm:py-3 sm:text-base"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     autoComplete="off"
@@ -130,13 +130,10 @@ const SearchModal = () => {
               <div className="flex-1 space-y-3 overflow-y-auto sm:space-y-4">
                 {/* Suggested Results */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold">Suggested results</h3>
+                  <h6 className="font-semibold">Suggested results</h6>
                   <ul className="space-y-2">
                     {suggestedResults.map((result, index) => (
-                      <li
-                        key={index}
-                        className="text-muted-foreground flex items-center gap-1 text-sm"
-                      >
+                      <li key={index} className="text-muted-foreground flex items-center gap-1">
                         <IoSearchOutline />{' '}
                         <span className="cursor-pointer hover:underline">{result}</span>
                       </li>
@@ -146,13 +143,10 @@ const SearchModal = () => {
 
                 {/* Search History */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold">History</h3>
+                  <h6 className="font-semibold">History</h6>
                   <ul className="space-y-2">
                     {searchHistory.map((item, index) => (
-                      <li
-                        key={index}
-                        className="text-muted-foreground flex items-center gap-1 text-sm"
-                      >
+                      <li key={index} className="text-muted-foreground flex items-center gap-1">
                         <IoMdTime />
                         <span className="cursor-pointer hover:underline">{item}</span>
                       </li>
@@ -162,7 +156,7 @@ const SearchModal = () => {
 
                 {/* Featured Products */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold">Featured products</h3>
+                  <h6 className="font-semibold">Featured products</h6>
                   <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                     {featuredProducts.map((product, index) => (
                       <div
@@ -170,13 +164,13 @@ const SearchModal = () => {
                         className="min-w-0 space-y-2 rounded-md border p-3 hover:shadow-md"
                       >
                         <div className="aspect-square rounded-sm bg-black/5 dark:bg-white/5" />
-                        <h4 className="truncate text-sm font-medium">{product.name}</h4>
+                        <h6 className="truncate font-medium">{product.name}</h6>
                         <div className="flex flex-wrap items-center justify-between">
                           <div className="flex items-center gap-2">
                             <span className="text-yellow-500">{product.stars}</span>
-                            <span className="text-sm text-gray-500">{product.rating}</span>
+                            <span className="text-gray-500">{product.rating}</span>
                           </div>
-                          <span className="text-sm font-semibold sm:text-base">
+                          <span className="font-semibold sm:text-base">
                             ${product.price.toLocaleString()}
                           </span>
                         </div>
@@ -187,12 +181,12 @@ const SearchModal = () => {
 
                 {/* All Categories */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold">All categories</h3>
+                  <h6 className="font-semibold">All categories</h6>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {categories.map((category, index) => (
                       <button
                         key={index}
-                        className="text-muted-foreground cursor-pointer rounded-md border p-2 text-left text-sm hover:bg-black/5 dark:hover:bg-white/5"
+                        className="text-muted-foreground rounded-md border p-2 text-left hover:bg-black/5 dark:hover:bg-white/5"
                       >
                         {category}
                       </button>

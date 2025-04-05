@@ -105,7 +105,7 @@ const ShopMenu = () => {
     <div ref={dropdownRef} className="relative">
       <button
         className={cn(
-          'relative flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 text-sm transition-colors',
+          'relative flex h-9 items-center justify-center gap-1 rounded-md px-3 transition-colors',
           shopOpen
             ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
             : 'hover:bg-black/5 dark:hover:bg-white/10',
@@ -120,15 +120,15 @@ const ShopMenu = () => {
           <div className="mx-auto h-full max-w-7xl space-y-5 bg-white px-4 py-5 sm:px-6 lg:px-8 dark:bg-black dark:text-white">
             <div className="grid h-full w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {categories.map((category, index) => (
-                <div key={index} className="space-y-4 text-sm">
-                  <h2 className="flex items-center gap-1 font-semibold">
+                <div key={index} className="space-y-4">
+                  <h6 className="flex items-center gap-1 font-semibold">
                     <MdOutlineShoppingBag className="size-5" /> {category.title}
-                  </h2>
+                  </h6>
                   <div className="flex flex-col items-start gap-2">
                     {category.items.map((item, idx) => (
                       <button
                         key={idx}
-                        className="text-muted-foreground cursor-pointer hover:text-inherit hover:underline"
+                        className="text-muted-foreground hover:text-inherit hover:underline"
                       >
                         {item}
                       </button>
@@ -138,7 +138,7 @@ const ShopMenu = () => {
               ))}
             </div>
 
-            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border text-sm font-medium transition-colors hover:bg-black/5 hover:text-red-500 dark:hover:bg-white/5">
+            <button className="flex h-10 w-full items-center justify-center gap-2 rounded-sm border font-medium transition-colors hover:bg-black/5 hover:text-red-500 dark:hover:bg-white/5">
               See all categories <FaArrowRightLong />
             </button>
           </div>
