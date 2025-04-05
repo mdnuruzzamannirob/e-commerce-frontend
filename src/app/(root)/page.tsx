@@ -1,10 +1,3 @@
-export const metadata = {
-  title: 'The-1 | Your Ultimate E-Commerce Destination',
-  description:
-    'Discover the best products and deals on The-1, your ultimate e-commerce destination. Shop now for an unparalleled shopping experience.',
-  keywords: 'e-commerce, online shopping, best deals, The-1, shop online, nextjs',
-};
-
 const Home = () => {
   return (
     <div className="container py-20">

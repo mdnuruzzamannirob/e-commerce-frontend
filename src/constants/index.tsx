@@ -1,6 +1,6 @@
 import { MdFavoriteBorder, MdUTurnRight } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
-import { BsCartPlus } from 'react-icons/bs';
+import { BsCartPlus, BsDisplay, BsMoonStars, BsSun } from 'react-icons/bs';
 import { IoMdHelpCircleOutline } from 'react-icons/io';
 
 export const accountMenuItems = [
@@ -28,6 +28,24 @@ export const accountMenuItems = [
     icon: <IoMdHelpCircleOutline className="size-4" />,
     text: 'Help Center',
     url: '/help-center',
+  },
+];
+
+export const themeOptions = [
+  {
+    code: 'system',
+    name: 'System',
+    icon: <BsDisplay className="size-5" />,
+  },
+  {
+    code: 'dark',
+    name: 'Dark',
+    icon: <BsMoonStars className="size-5" />,
+  },
+  {
+    code: 'light',
+    name: 'Light',
+    icon: <BsSun className="size-5" />,
   },
 ];
 

@@ -1,36 +1,28 @@
-import { cn } from '@/lib/utils';
-import { useRef, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { BsMoonStars, BsSun, BsDisplay } from 'react-icons/bs';
-import { useClickOutside } from '@/hooks/useClickOutside';
+'use client';
 
-const themeOptions = [
-  {
-    code: 'system',
-    name: 'System',
-    icon: <BsDisplay className="size-5" />,
-  },
-  {
-    code: 'light',
-    name: 'Light',
-    icon: <BsSun className="size-5" />,
-  },
-  {
-    code: 'dark',
-    name: 'Dark',
-    icon: <BsMoonStars className="size-5" />,
-  },
-];
+import { cn } from '@/lib/utils';
+import { useRef, useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { themeOptions } from '@/constants';
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Custom hook for click outside detection
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
-  // Find current theme object
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <p className="size-9 rounded-md bg-black/5 dark:bg-white/10"></p>;
+  }
+
+  // Get the current theme object, defaulting to "system"
   const currentTheme =
     themeOptions.find((option) => option.code === (theme || 'system')) || themeOptions[0];
 
@@ -58,7 +50,7 @@ const ThemeSwitcher = () => {
               key={option.code}
               className={cn(
                 'flex size-full items-center gap-2 rounded-sm p-2 text-sm transition-colors',
-                currentTheme?.code === option.code
+                currentTheme.code === option.code
                   ? 'bg-black/5 dark:bg-white/15'
                   : 'hover:bg-black/5 dark:hover:bg-white/15',
               )}
