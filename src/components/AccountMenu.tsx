@@ -4,8 +4,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { FaRegUserCircle } from 'react-icons/fa';
-import { IoIosArrowDown, IoIosLogOut } from 'react-icons/io';
+import { IoIosLogOut } from 'react-icons/io';
 
 const userData = {
   name: 'John Doe',
@@ -23,19 +22,15 @@ const AccountMenu = () => {
   useClickOutside(dropdownRef, () => setIsOpen(false));
 
   return (
-    <div ref={dropdownRef} className="relative">
-      <button
-        className={cn(
-          'flex h-9 items-center gap-1 rounded-md px-3 transition-colors',
-          isOpen
-            ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
-            : 'hover:bg-black/5 dark:hover:bg-white/10',
-        )}
+    <div ref={dropdownRef} className="relative size-9">
+      <Image
+        src={userData?.profileUrl}
+        alt="profile"
+        width={36}
+        height={36}
+        className="size-full cursor-pointer rounded-md"
         onClick={() => setIsOpen(!isOpen)}
-      >
-        <FaRegUserCircle className="size-5" />{' '}
-        <IoIosArrowDown className={isOpen ? 'rotate-180' : 'rotate-0'} />
-      </button>
+      />
 
       {isOpen && (
         <div className="absolute top-full right-0 mt-1 w-60 min-w-0 space-y-2 rounded-md border bg-white shadow-sm dark:bg-black">

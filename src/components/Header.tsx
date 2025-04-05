@@ -10,6 +10,7 @@ import ShoppingCartView from './ShoppingCartView';
 import AccountMenu from './AccountMenu';
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSwitcher from './ThemeSwitcher';
+import CollapsibleMenu from './CollapsibleMenu';
 
 type NavItem = {
   name: string;
@@ -38,11 +39,14 @@ const Header = () => {
 
   return (
     <header className="border-b bg-white text-black dark:bg-black dark:text-white">
-      <nav className="container flex items-center justify-between gap-10 p-4">
+      <nav className="container flex items-center justify-between p-3 sm:gap-10">
         {/* Left Section */}
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-1 sm:gap-2 lg:gap-10">
+          {/* Mobile Navigation */}
+          <CollapsibleMenu />
+
           <Logo />
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 max-lg:hidden">
             <LanguageSwitcher />
             <ThemeSwitcher />
             <SearchModal />
@@ -50,7 +54,7 @@ const Header = () => {
         </div>
 
         {/* Middle Navigation */}
-        <ul className="flex items-center gap-5 whitespace-nowrap">
+        <ul className="max flex items-center gap-5 whitespace-nowrap max-lg:hidden">
           {NAV_ITEMS.map((item) => (
             <li key={item.path}>
               {item.name === 'Shop' ? (
@@ -71,7 +75,12 @@ const Header = () => {
         </ul>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 min-lg:hidden">
+            <LanguageSwitcher />
+            <ThemeSwitcher />
+            <SearchModal />
+          </div>
           <FavoriteItemsView />
           <ShoppingCartView />
           <AccountMenu />

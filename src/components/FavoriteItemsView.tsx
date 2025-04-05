@@ -30,7 +30,7 @@ const FavoriteItemsView = () => {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="relative max-sm:hidden">
       <button
         className={cn(
           'relative flex size-9 items-center justify-center gap-2 rounded-md transition-colors',
