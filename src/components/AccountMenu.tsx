@@ -12,7 +12,7 @@ const userData = {
   profileUrl: 'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png',
 };
 
-const Account = () => {
+const AccountMenu = () => {
   const [accountOpen, setAccountOpen] = useState(false);
 
   const pathname = usePathname();
@@ -100,4 +100,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default AccountMenu;

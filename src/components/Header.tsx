@@ -3,12 +3,12 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
-import Shop from './Shop';
-import Search from './Search';
-import Favorite from './Favorite';
-import Cart from './Cart';
-import Account from './Account';
-import Language from './Language';
+import ShopMenu from './ShopMenu';
+import SearchModal from './SearchModal';
+import FavoriteItemsView from './FavoriteItemsView';
+import ShoppingCartView from './ShoppingCartView';
+import AccountMenu from './AccountMenu';
+import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSwitcher from './ThemeSwitcher';
 
 type NavItem = {
@@ -43,9 +43,9 @@ const Header = () => {
         <div className="flex items-center gap-10">
           <Logo />
           <div className="flex items-center gap-2">
-            <Language />
+            <LanguageSwitcher />
             <ThemeSwitcher />
-            <Search />
+            <SearchModal />
           </div>
         </div>
 
@@ -54,7 +54,7 @@ const Header = () => {
           {NAV_ITEMS.map((item) => (
             <li key={item.path}>
               {item.name === 'Shop' ? (
-                <Shop />
+                <ShopMenu />
               ) : (
                 <button
                   onClick={() => handleNavigation(item.path)}
@@ -72,9 +72,9 @@ const Header = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-2">
-          <Favorite />
-          <Cart />
-          <Account />
+          <FavoriteItemsView />
+          <ShoppingCartView />
+          <AccountMenu />
         </div>
       </nav>
     </header>

@@ -15,7 +15,7 @@ const languages = [
   },
 ];
 
-const Language = () => {
+const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
@@ -85,4 +85,4 @@ const Language = () => {
   );
 };
 
-export default Language;
+export default LanguageSwitcher;

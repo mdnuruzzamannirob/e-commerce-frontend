@@ -4,7 +4,7 @@ import { IoMdTime } from 'react-icons/io';
 import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 import { RiSearch2Line } from 'react-icons/ri';
 
-const Search = () => {
+const SearchModal = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
@@ -208,4 +208,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchModal;

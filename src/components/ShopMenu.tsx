@@ -81,7 +81,7 @@ const categories = [
   },
 ];
 
-const Shop = () => {
+const ShopMenu = () => {
   const [shopOpen, setShopOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -105,7 +105,7 @@ const Shop = () => {
     <div ref={dropdownRef} className="relative">
       <button
         className={cn(
-          'relative flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 text-sm font-medium transition-colors',
+          'relative flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 text-sm transition-colors',
           shopOpen
             ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
             : 'hover:bg-black/5 dark:hover:bg-white/10',
@@ -148,4 +148,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopMenu;
