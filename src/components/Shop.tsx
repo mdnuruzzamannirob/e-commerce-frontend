@@ -107,8 +107,8 @@ const Shop = () => {
         className={cn(
           'relative flex h-9 cursor-pointer items-center justify-center gap-1 rounded-md px-3 text-sm font-medium transition-colors',
           shopOpen
-            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
-            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
+            ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 dark:hover:bg-white/10',
         )}
         onClick={() => setShopOpen(!shopOpen)}
       >
@@ -138,7 +138,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border text-sm font-medium transition-colors hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/5">
+            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border text-sm font-medium transition-colors hover:bg-black/5 hover:text-red-500 dark:hover:bg-white/5">
               See all categories <FaArrowRightLong />
             </button>
           </div>

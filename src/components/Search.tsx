@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { IoMdTime } from 'react-icons/io';
 import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
+import { RiSearch2Line } from 'react-icons/ri';
 
 const Search = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -73,12 +74,12 @@ const Search = () => {
         className={cn(
           'flex size-9 items-center justify-center rounded-md transition-colors',
           searchOpen
-            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
-            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
+            ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 dark:hover:bg-white/10',
         )}
         onClick={() => setSearchOpen(true)}
       >
-        <IoSearchOutline className="size-5" />
+        <RiSearch2Line className="size-5" />
       </button>
 
       {searchOpen && (
@@ -117,7 +118,7 @@ const Search = () => {
                     ref={inputRef}
                     type="text"
                     placeholder="Search anything..."
-                    className="w-full rounded-md border py-2 pr-3 pl-10 text-sm outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 sm:py-3 sm:text-base"
+                    className="w-full rounded-md border py-2 pr-3 pl-10 text-sm outline-none focus:border-transparent focus:ring-2 focus:ring-red-500 sm:py-3 sm:text-base"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     autoComplete="off"

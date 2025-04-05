@@ -38,8 +38,8 @@ const Cart = () => {
         className={cn(
           'relative flex size-9 cursor-pointer items-center justify-center gap-2 rounded-md transition-colors',
           cartOpen
-            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
-            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
+            ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 dark:hover:bg-white/10',
         )}
         onClick={() => setCartOpen(!cartOpen)}
       >
@@ -111,7 +111,7 @@ const Cart = () => {
           </div>
 
           <div className="p-3 text-sm font-medium">
-            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-blue-500 px-3 text-white hover:bg-blue-600">
+            <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-red-500 px-3 text-white hover:bg-red-600">
               View Cart Items
             </button>
           </div>

@@ -41,8 +41,8 @@ const Account = () => {
         className={cn(
           'flex h-9 cursor-pointer items-center gap-1 rounded-md px-3 transition-colors',
           accountOpen
-            ? 'bg-black/5 text-blue-500 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
-            : 'hover:bg-black/5 hover:text-blue-500 dark:hover:bg-white/10',
+            ? 'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15'
+            : 'hover:bg-black/5 dark:hover:bg-white/10',
         )}
         onClick={() => setAccountOpen(!accountOpen)}
       >
@@ -67,7 +67,7 @@ const Account = () => {
 
             <button
               onClick={() => !pathname.includes('profile') && router.push('/profile')}
-              className="h-8 w-full cursor-pointer rounded-sm border text-sm hover:bg-gray-100 hover:text-blue-500 dark:hover:bg-white/5"
+              className="h-8 w-full cursor-pointer rounded-sm border text-sm hover:bg-gray-100 hover:text-red-500 dark:hover:bg-white/5"
             >
               View Profile
             </button>
@@ -80,8 +80,8 @@ const Account = () => {
                 className={cn(
                   'group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3',
                   pathname.includes(item.url)
-                    ? 'bg-gray-100 dark:bg-white/5'
-                    : 'text-muted-foreground hover:bg-gray-100 hover:text-inherit dark:hover:bg-white/5',
+                    ? 'bg-black/5 dark:bg-white/15'
+                    : 'text-muted-foreground hover:bg-black/5 hover:text-inherit dark:hover:bg-white/15',
                 )}
               >
                 {item.icon} {item.text}
@@ -90,7 +90,7 @@ const Account = () => {
           </div>
           <p className="border-b"></p>
           <div className="px-2 pb-2 text-sm font-medium">
-            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10">
+            <button className="group flex h-9 w-full cursor-pointer items-center gap-2 rounded-sm px-3 text-red-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/20">
               <IoIosLogOut className="size-4" /> Log Out
             </button>
           </div>

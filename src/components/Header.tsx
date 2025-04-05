@@ -9,6 +9,7 @@ import Favorite from './Favorite';
 import Cart from './Cart';
 import Account from './Account';
 import Language from './Language';
+import ThemeSwitcher from './ThemeSwitcher';
 
 type NavItem = {
   name: string;
@@ -43,6 +44,7 @@ const Header = () => {
           <Logo />
           <div className="flex items-center gap-2">
             <Language />
+            <ThemeSwitcher />
             <Search />
           </div>
         </div>
@@ -57,8 +59,8 @@ const Header = () => {
                 <button
                   onClick={() => handleNavigation(item.path)}
                   className={cn(
-                    'cursor-pointer text-sm transition-colors hover:text-blue-500',
-                    pathname.includes(item.path) && 'text-blue-500',
+                    'cursor-pointer text-sm transition-colors hover:text-red-500',
+                    pathname.includes(item.path) && 'text-red-500',
                   )}
                 >
                   {item.name}
