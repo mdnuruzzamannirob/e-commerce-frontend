@@ -30,6 +30,7 @@ const eslintConfig = [
       // TypeScript essential rules
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
 
       // React/Next.js specific rules
       'react/react-in-jsx-scope': 'off',

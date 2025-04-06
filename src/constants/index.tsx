@@ -2,6 +2,16 @@ import { MdFavoriteBorder, MdUTurnRight } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
 import { BsCartPlus, BsDisplay, BsMoonStars, BsSun } from 'react-icons/bs';
 import { IoMdHelpCircleOutline } from 'react-icons/io';
+import Logo from '@/components/Logo';
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaXTwitter,
+  FaYoutube,
+} from 'react-icons/fa6';
+import { FooterNavData } from '@/types';
 
 export const accountMenuItems = [
   {
@@ -48,6 +58,77 @@ export const themeOptions = [
     icon: <BsSun className="size-5" />,
   },
 ];
+
+// footer-data.ts
+export const footerNavData: FooterNavData = {
+  brand: {
+    name: 'THE-1',
+    description:
+      'Welcome to your fashion destination. Discover the latest trends, find perfect pieces for your wardrobe, and enjoy seamless online shopping.',
+    logo: <Logo />,
+  },
+  socialLinks: [
+    {
+      href: '',
+      icon: <FaFacebook key="facebook" className="size-full" />,
+    },
+    {
+      href: '',
+      icon: <FaInstagram key="instagram" className="size-full" />,
+    },
+    {
+      href: '',
+      icon: <FaXTwitter key="twitter" className="size-full" />,
+    },
+    {
+      href: '',
+      icon: <FaLinkedin key="linkedin" className="size-full" />,
+    },
+    {
+      href: '',
+      icon: <FaTiktok key="tiktok" className="size-full" />,
+    },
+    {
+      href: '',
+      icon: <FaYoutube key="youtube" className="size-full" />,
+    },
+  ],
+  footerSections: [
+    {
+      title: 'Product',
+      items: [
+        { name: 'Home', href: '/' },
+        { name: 'Advisable', href: '/advisable' },
+        { name: 'Promotions', href: '/promotions' },
+      ],
+    },
+    {
+      title: 'Company',
+      items: [
+        { name: 'Contact', href: '/contact' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'FAQ', href: '/faq' },
+      ],
+    },
+    {
+      title: 'Legal',
+      items: [
+        { name: 'Privacy', href: '/privacy' },
+        { name: 'Terms', href: '/terms' },
+        { name: '40%', href: '/discount-policy' }, // Consider renaming this to something more descriptive
+      ],
+    },
+  ],
+  copyright: '© 2024 THE-1. All rights reserved.',
+  paymentMethods: [
+    '/visa.avif',
+    '/mastercard.avif',
+    '/gpay.avif',
+    '/ipay.avif',
+    '/paypal.avif',
+    '/stripe.png',
+  ],
+};
 
 export const demoCartData = [
   {
