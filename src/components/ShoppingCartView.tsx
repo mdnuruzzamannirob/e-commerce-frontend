@@ -20,7 +20,7 @@ const ShoppingCartView = () => {
   const totalAmount = demoCartData?.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="min-sm:relative">
       <button
         className={cn(
           'relative flex size-9 items-center justify-center gap-2 rounded-md transition-colors',
@@ -39,7 +39,7 @@ const ShoppingCartView = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-1 w-96 min-w-0 rounded-md border bg-white shadow-sm dark:bg-black">
+        <div className="absolute top-full right-0 mt-1 w-80 min-w-0 rounded-md border bg-white shadow-sm sm:w-96 dark:bg-black">
           <div className="flex items-center justify-between gap-2 border-b p-3">
             <h5 className="font-semibold"> Shopping cart</h5>
             <p>{demoCartData?.length} items</p>

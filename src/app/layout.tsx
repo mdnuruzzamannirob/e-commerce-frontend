@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn('antialiased', nunitoSans.variable, openSans.variable, sora.variable)}>
         <ThemeProvider>
           <Header />
-          <main>{children}</main>
+          {children}
           <Footer />
         </ThemeProvider>
       </body>

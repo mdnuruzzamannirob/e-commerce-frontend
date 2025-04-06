@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-white text-black dark:bg-black dark:text-white">
+    <header className="fixed z-50 w-full border-b bg-white text-black dark:bg-black dark:text-white">
       <nav className="container flex items-center justify-between p-3 sm:gap-10">
         {/* Left Section */}
         <div className="flex items-center gap-1 sm:gap-2 lg:gap-10">
@@ -75,7 +75,7 @@ const Header = () => {
         </ul>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="relative flex items-center gap-1 sm:gap-2">
           <div className="flex items-center gap-1 sm:gap-2 min-lg:hidden">
             <LanguageSwitcher />
             <ThemeSwitcher />
