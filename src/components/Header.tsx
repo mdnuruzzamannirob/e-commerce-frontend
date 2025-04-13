@@ -32,7 +32,7 @@ const Header = () => {
   const router = useRouter();
 
   const handleNavigation = (path: string) => {
-    if (!pathname.includes(path)) {
+    if (pathname && !pathname.includes(path)) {
       router.push(path);
     }
   };
@@ -64,7 +64,7 @@ const Header = () => {
                   onClick={() => handleNavigation(item.path)}
                   className={cn(
                     'transition-colors hover:text-red-500',
-                    pathname.includes(item.path) && 'text-red-500',
+                    pathname?.includes(item.path) && 'text-red-500',
                   )}
                 >
                   {item.name}

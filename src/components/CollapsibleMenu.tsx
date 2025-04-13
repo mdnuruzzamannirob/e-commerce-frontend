@@ -183,7 +183,7 @@ const CollapsibleMenu = () => {
           }}
           className={cn(
             'flex w-full items-center justify-between gap-3 rounded-sm px-3 py-2 transition-colors',
-            pathname.includes(item.path as string)
+            pathname?.includes(item.path as string)
               ? 'bg-gray-100 dark:bg-white/10'
               : openSubmenus[item.name]
                 ? 'bg-gray-100 dark:bg-white/10'
