@@ -52,7 +52,7 @@ const ShoppingCartView = () => {
                 className="flex size-full justify-between gap-2 p-3 hover:bg-gray-50 dark:hover:bg-white/5"
               >
                 <div className="flex min-w-0 flex-2/3 items-center gap-2">
-                  <button onClick={() => !pathname.includes(item.url) && router.push(item.url)}>
+                  <button onClick={() => !pathname?.includes(item.url) && router.push(item.url)}>
                     <Image
                       src={
                         'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png'
@@ -65,7 +65,7 @@ const ShoppingCartView = () => {
                   </button>
                   <div className="min-w-0">
                     <h6
-                      onClick={() => !pathname.includes(item.url) && router.push(item.url)}
+                      onClick={() => !pathname?.includes(item.url) && router.push(item.url)}
                       className="cursor-pointer truncate font-semibold hover:underline"
                     >
                       {item?.name}

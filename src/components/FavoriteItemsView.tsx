@@ -63,7 +63,7 @@ const FavoriteItemsView = () => {
               >
                 <div className="flex w-full min-w-0 items-center gap-2">
                   <button
-                    onClick={() => !pathname.includes(item.url) && router.push(item.url)}
+                    onClick={() => !pathname?.includes(item.url) && router.push(item.url)}
                     className="size-10 min-w-10"
                   >
                     <Image
@@ -78,7 +78,7 @@ const FavoriteItemsView = () => {
                   </button>
                   <div className="min-w-0">
                     <h6
-                      onClick={() => !pathname.includes(item.url) && router.push(item.url)}
+                      onClick={() => !pathname?.includes(item.url) && router.push(item.url)}
                       className="cursor-pointer truncate font-semibold hover:underline"
                     >
                       {item?.name}

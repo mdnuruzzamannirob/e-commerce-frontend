@@ -48,7 +48,7 @@ const AccountMenu = () => {
             </div>
 
             <button
-              onClick={() => !pathname.includes('profile') && router.push('/profile')}
+              onClick={() => !pathname?.includes('profile') && router.push('/profile')}
               className="h-8 w-full rounded-sm border hover:bg-gray-100 hover:text-red-500 dark:hover:bg-white/5"
             >
               View Profile
@@ -58,10 +58,10 @@ const AccountMenu = () => {
             {accountMenuItems.map((item, index) => (
               <button
                 key={index}
-                onClick={() => !pathname.includes(item.url) && router.push(item.url)}
+                onClick={() => !pathname?.includes(item.url) && router.push(item.url)}
                 className={cn(
                   'group flex h-9 w-full items-center gap-2 rounded-sm px-3',
-                  pathname.includes(item.url)
+                  pathname?.includes(item.url)
                     ? 'bg-black/5 dark:bg-white/15'
                     : 'text-muted-foreground hover:bg-black/5 hover:text-inherit dark:hover:bg-white/15',
                 )}
