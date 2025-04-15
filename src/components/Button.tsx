@@ -8,17 +8,18 @@ import { useRouter } from 'next/navigation';
 import { ButtonHTMLAttributes } from 'react';
 
 const buttonVariants = cva(
-  'relative flex items-center select-none justify-center cursor-pointer overflow-hidden rounded-full capitalize  transition-colors disabled:cursor-not-allowed disabled:opacity-50',
+  'relative flex items-center select-none justify-center cursor-pointer overflow-hidden rounded-sm capitalize  transition-colors disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
-        primary: 'bg-blue-500 text-white hover:bg-blue-600 dark:hover:bg-blue-600',
+        primary: 'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
         secondary:
           'bg-zinc-700 dark:bg-white text-white dark:text-black hover:bg-zinc-600 dark:hover:bg-white/90',
+        tertiary: 'bg-transparent hover:bg-red-500/15 hover:text-red-500',
         outline:
           'border border-zinc-200 dark:border-white/15 bg-transparent hover:bg-zinc-200 dark:hover:bg-white/15',
-        ghost: 'bg-transparent hover:bg-blue-600 dark:text-zinc-700 hover:text-white',
-        link: 'dark:text-white hover:text-blue-500 hover:underline',
+        ghost: 'bg-transparent hover:bg-red-600 dark:text-zinc-700 hover:text-white',
+        link: 'dark:text-white hover:text-red-500 hover:underline',
         success: 'bg-green-500 text-white hover:bg-green-600',
         danger: 'bg-red-500 text-white hover:bg-red-600',
         warning: 'bg-yellow-500 text-white hover:bg-yellow-600',
@@ -26,7 +27,7 @@ const buttonVariants = cva(
       size: {
         xs: 'px-2 py-0.5 text-[10px] gap-1',
         sm: 'px-3 py-1 text-xs gap-1.5',
-        md: 'px-4 py-1.5 text-sm gap-2',
+        md: 'px-4 h-9 text-sm gap-2',
         lg: 'px-5 py-2 text-base gap-2.5',
       },
       isLoading: {
@@ -38,12 +39,17 @@ const buttonVariants = cva(
       {
         variant: 'primary',
         isLoading: true,
-        className: 'hover:bg-blue-500',
+        className: 'hover:bg-red-500',
       },
       {
         variant: 'secondary',
         isLoading: true,
         className: 'hover:bg-zinc-700 dark:hover:bg-white',
+      },
+      {
+        variant: 'tertiary',
+        isLoading: true,
+        className: 'hover:bg-red-500/15 ',
       },
       {
         variant: 'outline',
@@ -110,12 +116,13 @@ const Button = ({
   const rippleColors = {
     primary: 'bg-white',
     secondary: 'bg-white dark:bg-black',
+    tertiary: 'bg-black dark:bg-white',
     outline: 'bg-zinc-700 dark:bg-white',
     ghost: 'bg-white',
     success: 'bg-white',
     danger: 'bg-white',
     warning: 'bg-white',
-    link: 'bg-blue-500',
+    link: 'bg-red-500',
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

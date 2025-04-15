@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 const Home = () => {
   return (
-    <main className="container py-20">
+    <main className="">
       {/* header section */}
-      <section className="flex min-h-dvh flex-col items-center justify-between gap-10 py-20 lg:flex-row">
+      <section className="container flex min-h-dvh flex-col items-center justify-between gap-10 py-20 lg:flex-row">
         <div className="w-full">
           <h1 className="mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl dark:text-white">
             Payments tool for software companies
@@ -45,6 +45,29 @@ const Home = () => {
             className="min-h-[400px] min-w-[400px] select-none"
           />
         </div>
+      </section>
+
+      {/* newsLatter section */}
+      <section className="relative flex h-[80dvh] w-full flex-col items-center justify-center gap-6 bg-[url('/Newsletter_BG.avif')] bg-contain py-10">
+        <div className="bg-background/85 absolute inset-0"></div>
+
+        <h1 className="font-tertiary z-10 bg-gradient-to-b from-stone-500 to-stone-300 bg-clip-text text-center text-[40px] leading-relaxed font-bold text-transparent uppercase">
+          Discover Style Just <br /> A Button Press Away!
+        </h1>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="Your email address"
+          className="font-tertiary z-10 mx-auto h-12 w-full max-w-xl rounded-sm border bg-zinc-900 text-center text-base outline-none"
+        />
+        <button className="font-tertiary z-10 h-12 w-full max-w-xl rounded-sm bg-black text-base font-semibold text-white dark:bg-neutral-300 dark:text-black">
+          Subscribe
+        </button>
+        <h6 className="font-tertiary z-10 text-center text-[13px] font-medium text-neutral-500 uppercase">
+          Instantly access the latest fashion trends and exclusive deals on <br /> our site.
+          Discover your perfect style in a few clicks!
+        </h6>
       </section>
     </main>
   );

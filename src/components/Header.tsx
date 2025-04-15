@@ -11,6 +11,7 @@ import AccountMenu from './AccountMenu';
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSwitcher from './ThemeSwitcher';
 import CollapsibleMenu from './CollapsibleMenu';
+import { Button } from './Button';
 
 type NavItem = {
   name: string;
@@ -37,6 +38,8 @@ const Header = () => {
     }
   };
 
+  const user = true;
+
   return (
     <header className="fixed z-50 w-full border-b bg-white text-black dark:bg-black dark:text-white">
       <nav className="container flex items-center justify-between p-3 sm:gap-10">
@@ -54,7 +57,7 @@ const Header = () => {
         </div>
 
         {/* Middle Navigation */}
-        <ul className="max flex items-center gap-5 whitespace-nowrap max-lg:hidden">
+        <ul className="max flex items-center whitespace-nowrap max-lg:hidden">
           {NAV_ITEMS.map((item) => (
             <li key={item.path}>
               {item.name === 'Shop' ? (
@@ -63,7 +66,7 @@ const Header = () => {
                 <button
                   onClick={() => handleNavigation(item.path)}
                   className={cn(
-                    'transition-colors hover:text-red-500',
+                    'h-9 px-3 transition-colors hover:text-red-500',
                     pathname?.includes(item.path) && 'text-red-500',
                   )}
                 >
@@ -76,14 +79,25 @@ const Header = () => {
 
         {/* Right Actions */}
         <div className="relative flex items-center gap-1 sm:gap-2">
-          <div className="flex items-center gap-1 sm:gap-2 min-lg:hidden">
-            <LanguageSwitcher />
-            <ThemeSwitcher />
-            <SearchModal />
-          </div>
-          <FavoriteItemsView />
-          <ShoppingCartView />
-          <AccountMenu />
+          {user ? (
+            <>
+              <Button variant="tertiary" href="/login">
+                Login
+              </Button>
+              <Button href="/register">register</Button>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-1 sm:gap-2 min-lg:hidden">
+                <LanguageSwitcher />
+                <ThemeSwitcher />
+                <SearchModal />
+              </div>
+              <FavoriteItemsView />
+              <ShoppingCartView />
+              <AccountMenu />
+            </>
+          )}
         </div>
       </nav>
     </header>
